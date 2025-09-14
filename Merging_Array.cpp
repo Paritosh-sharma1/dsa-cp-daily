@@ -110,35 +110,20 @@ long long fact(int n) {
 void paritosh() {
     ll n,m;
     cin>> n>> m;
-    vl arr(n),brr(m),c;
+    vl arr(n),brr(m),c(n+m);
     REP(i,0,n){
         cin>> arr[i];
     }
     REP(i,0,m){
         cin>> brr[i];
     }
-    // debug(arr);
-    // debug(brr);
     int i=0,j=0,k=0;
-    while(i<n && j<m){
-        if(arr[i]<brr[j]){
-            c.push_back(arr[i]);
-            i++;
-        }
-        else{
-            c.push_back(brr[j]);
-            j++;
-        }
-    debug(c);
+    while (i < n && j < m) {
+    if (arr[i] < brr[j]) c[k++] = arr[i++];
+    else c[k++] = brr[j++];
     }
-    while(i<n){
-        c.push_back(arr[i]);
-        i++;
-    }
-    while(j<m){        
-        c.push_back(brr[j]);
-        j++;
-    }
+    while (i < n) c[k++] = arr[i++];
+    while (j < m) c[k++] = brr[j++];
     REP(i,0,c.size()){
         cout<<c[i]<<" ";
     }
