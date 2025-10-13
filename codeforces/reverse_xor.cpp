@@ -102,7 +102,7 @@ string decimaltobinary(ll n){
         return "0";
     }
     while(n>0){
-        binary=to_string(n%2)+binary; // adding + reversing
+        binary=to_string(n%2)+binary; //adding + reversing
         n/=2;
     }
     return binary;
