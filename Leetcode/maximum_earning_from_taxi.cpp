@@ -25,5 +25,5 @@ long long maxTaxiEarnings(int n, vector<vector<int>>& ar) {
     for(auto &it:ar) it[2]+=it[1]-it[0];
     sort(ar.begin(),ar.end());
     return help(ar,0);
-}
+    }
 };
