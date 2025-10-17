@@ -12,7 +12,7 @@ public:
         for(int i=0;i<nums.size();i++){
             cur = prod+sum-n*nums[n-i];
             maxi=max(cur,maxi);
-            prod=cur;a
+            prod=cur;
         }
         return maxi;
     }
