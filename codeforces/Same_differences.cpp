@@ -105,24 +105,26 @@ long long fact(int n) {
 // 5. Don't get stuck for long hours
 
 void paritosh() {
-    ll n;
-    cin>> n;
-    vl arr(n);
-    REP(i,0,n){
-        cin>> arr[i];
+    int n;
+    cin >> n;
+    vector<int> v(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+        v[i] -= i;
     }
-    ll cnt=0;
-    REP(i,0,n){
-        REP(j,i+1,n){
-            if(arr[j]<=arr[i]){
-                continue;
-            }
-            else if(arr[j]-arr[i]==j-i){
-                cnt++;
-            }
-        }
+
+    map<long long, long long> freq;
+    for (int i = 0; i < n; i++)
+        freq[v[i]]++;
+
+    long long ans = 0;
+    for (auto &[val, count] : freq) {
+        ans += (count * (count - 1)) / 2;
     }
-    cout<<cnt<<endl;
+
+    cout << ans << "\n";
+
 }
 
 int main() {
