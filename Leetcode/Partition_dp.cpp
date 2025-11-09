@@ -104,6 +104,8 @@ long long fact(int n) {
 // 4. Solve an optimal number of problems like 200-400, not 2000-4000
 // 5. Don't get stuck for long hours
 
+
+//Memoization
 int solve(int i,int j,vl& arr,vector<vector<int>>& dp){
     if(i==j){
         return 0;
@@ -118,12 +120,14 @@ int solve(int i,int j,vl& arr,vector<vector<int>>& dp){
     }
     return dp[i][j]=mini;
 }
+
 int mcm(vl& arr,int n){
     vector<vector<int>>dp(n,vector<int>(n,-1));
     int i=1;
     int j=n-1;
     return solve(i,j,arr,dp);
 }
+
 void paritosh() {
     ll n;
     cin>> n;
@@ -131,7 +135,30 @@ void paritosh() {
     REP(i,0,n){
         cin>> arr[i];
     }
-    cout<<mcm(arr,n)<<endl;
+    // function to call for memoization
+
+    // cout<<mcm(arr,n)<<endl; 
+    
+    //Tabulation 
+    
+    vector<vector<int>>dp(n,vector<int>(n,0));
+    
+    //Base case
+    for(int i=1;i<n;i++){
+        dp[i][i]=0;
+    }
+
+    for(int i=n-1;i>=1;i--){
+        for(int j=i+1;j<n;j++){
+            int mini=INT_MAX;
+            for(int k=i;k<j;k++){
+                int steps = arr[i-1]*arr[k]*arr[j]+dp[i][k]+dp[k+1][j];
+                mini=min(steps,mini);
+            }
+            dp[i][j]=mini;
+        }
+    }
+    cout<<dp[1][n-1]<<endl;
 }
 
 int main() {
