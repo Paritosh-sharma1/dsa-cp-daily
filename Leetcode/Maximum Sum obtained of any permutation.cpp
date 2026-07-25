@@ -1,4 +1,4 @@
-Link: https://leetcode.com/problems/maximum-sum-obtained-of-any-permutation/description/
+// Link: https://leetcode.com/problems/maximum-sum-obtained-of-any-permutation/description/
 
 
 class Solution {
